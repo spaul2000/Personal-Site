@@ -1,5 +1,6 @@
 import React from 'react';
 import Music from '../components/Lists/Music';
+import Books from '../components/Lists/Books';
 
 function Lists(props) {
     const sections = ['Music', 'Books', 'Movies'];
@@ -13,6 +14,7 @@ function Lists(props) {
                     </div>
                 </header>
                 <Music />
+                <Books />
             </article>
         </div>
     );

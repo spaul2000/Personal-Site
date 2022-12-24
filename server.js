@@ -1,8 +1,9 @@
 var SpotifyWebApi = require('spotify-web-api-node');
 const express = require('express');
 const app = new express();
+const path = require('path')
 
-app.use('/', express.static('../build'));
+app.use('/', express.static(path.join(__dirname + '/build')));
 
 // Create the api object with the credentials
 const spotifyapi = new SpotifyWebApi({
@@ -33,7 +34,7 @@ app.get("/artists", (req, res) => {
 app.get("/songs", (req, res) => {
     console.log("got the request");
 
-    spotifyapi.getMyTopTracks({ limit: 10 }).then((data) => {
+    spotifyapi.getMyTopTracks({ limit: 30 }).then((data) => {
         let topSongs = data.body.items;
         let songsAndArtist = topSongs.map(song => [song.name, song.artists])
         let songs = topSongs.map(song => song.name)
